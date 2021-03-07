@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <th:block th:insert="common.html :: head('Page1')"></th:block>
+    
+    <body class="sb-nav-fixed">
+    
+    	<th:block th:insert="common.html :: top_menu"></th:block>
+        
+        <div id="layoutSidenav">
+        
+        	<th:block th:insert="common.html :: left_menu"></th:block>
+            
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container">
+						<div class="row justify-content-center">
+							<div class="col-lg-7">
+								<div class="card shadow-lg border-0 rounded-lg mt-5">
+									<div class="card-header">
+										<h3 class="text-center font-weight-light my-4"
+											th:text="#{employee.create}"></h3>
+									</div>
+									<div class="card-body">
+										<form th:action="@{/employee/add}"
+											th:object="${employee}" method="post"
+											class="needs-validation" novalidate>
+	
+											<div class="form-group" id="citizenNumberGroup">
+												<label class="small mb-1" for="inputCitizenNumber"
+													th:text="#{employee.citizenNumber}"> </label> <input
+													id="citizenNumberInput" class="form-control py-4" type="text"
+													th:placeholder="#{employee.citizenNumber.placeholder}"
+													th:field="*{citizenNumber}" required />
+									
+												<div id="citizenNumberError" class="invalid-feedback"
+													th:text="#{employee.citizenNumber.required}"></div>
+
+											</div>
+											
+											<div class="form-row">
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="small mb-1" for="inputFirstName"
+															th:text="#{employee.firstName}"></label> <input
+															class="form-control py-4" id="inputFirstName" type="text"
+															th:placeholder="#{employee.firstName.placeholder}"
+															th:field="*{firstName}" required />
+														<div class="invalid-feedback"
+															th:text="#{employee.firstName.required}"></div>
+													</div>
+												</div>
+												<div class="col-md-6">
+													<div class="form-group">
+														<label class="small mb-1" for="inputLastName"
+															th:text="#{employee.lastName}"></label> <input
+															class="form-control py-4" id="inputLastName" type="text"
+															th:placeholder="#{employee.lastName.placeholder}"
+															th:field="*{lastName}" required />
+														<div class="invalid-feedback"
+															th:text="#{employee.lastName.required}"></div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group mt-4 mb-0">
+												<button class="btn btn-primary btn-block"
+													th:text="#{employee.create}"></button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+                </main>
+                <th:block th:insert="common.html :: footer"></th:block>
+            </div>
+        </div>
+        <th:block th:insert="common.html :: script"></th:block>
+    </body>
+</html>
