@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <th:block th:insert="common.html :: head('Page1')"></th:block>
+    <th:block th:insert="common.html :: head('Employee List')"></th:block>
     
     <body class="sb-nav-fixed">
     
@@ -31,8 +31,15 @@
 										<tr>
 											<th>ID</th>
 											<th th:text="#{employee.citizenNumber}"></th>
-											<th th:text="#{employee.firstName}"></th>											
+											<th th:text="#{employee.firstName}"></th>
+											<th th:text="#{employee.middleName}"></th>
 											<th th:text="#{employee.lastName}"></th>
+											<th th:text="#{employee.birthDate}"></th>
+											<th th:text="#{employee.email}"></th>
+											<th th:text="#{employee.phoneNumber}"></th>
+											<th th:text="#{employee.status}"></th>
+											<th th:text="#{employee.role}"></th>
+											<th th:text="#{employee.update}"></th>
 										</tr>
 									</thead>
 									<tbody>
@@ -41,7 +48,16 @@
 												<td th:text="${e.id}"></td>
 												<td th:text="${e.citizenNumber}"></td>
 												<td th:text="${e.firstName}"></td>
+												<td th:text="${e.middleName}"></td>
 												<td th:text="${e.lastName}"></td>
+												<td th:text="${#temporals.format(e.birthDate, date_format)}"></td>
+												<td th:text="${e.email}"></td>
+												<td th:text="${e.phoneNumber}"></td>
+												<td th:text="${e.status}"></td>
+												<td th:text="${e.role}"></td>
+												<td  >
+													<a th:href="@{/employee/update/{id}(id=${e.id})}" th:text="#{employee.update}" ></a>
+												</td>
 											</tr>
 										</div>
 									</tbody>

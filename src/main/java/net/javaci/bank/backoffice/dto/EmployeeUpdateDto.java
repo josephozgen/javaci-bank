@@ -1,4 +1,4 @@
-package net.javaci.bank.db.model;
+package net.javaci.bank.backoffice.dto;
 
 import java.time.LocalDate;
 
@@ -14,8 +14,8 @@ import net.javaci.bank.db.model.enumeration.EmployeeRoleType;
 import net.javaci.bank.db.model.enumeration.EmployeeStatusType;
 
 @Getter @Setter @ToString
-public class Employee {
-	private Long id;
+public class EmployeeUpdateDto {
+private Long id;
 	
     private String citizenNumber;
     
@@ -37,8 +37,6 @@ public class Employee {
     private LocalDate birthDate;
     
     private String phoneNumber;
-    
-    private String password;
     
     private EmployeeStatusType status;
     

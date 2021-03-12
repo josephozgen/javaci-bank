@@ -19,10 +19,10 @@
 							<div class="card shadow-lg border-0 rounded-lg mt-5">
 								<div class="card-header">
 									<h3 class="text-center font-weight-light my-4"
-										th:text="#{employee.create}"></h3>
+										th:text="#{employee.update}"></h3>
 								</div>
 								<div class="card-body">
-									<form th:action="@{/employee/add}" th:object="${employeeDto}"
+									<form th:action="@{/employee/update/{id}(id=${employeeDto.id})}" th:object="${employeeDto}"
 										method="post" class="needs-validation" novalidate>
 
 										<div class="form-group" id="citizenNumberGroup">
@@ -31,7 +31,7 @@
 												id="citizenNumberInput" class="form-control py-4"
 												type="text"
 												th:placeholder="#{employee.citizenNumber.placeholder}"
-												th:field="*{citizenNumber}" required />
+												th:field="*{citizenNumber}" readonly />
 
 											<div id="citizenNumberError" class="invalid-feedback"
 												th:text="#{employee.citizenNumber.required}"></div>
@@ -79,7 +79,7 @@
 														class="form-control py-4" id="inputEmailAddress"
 														type="email" aria-describedby="emailHelp"
 														th:placeholder="#{employee.email.placeholder}"
-														th:field="*{email}" required
+														th:field="*{email}" readonly
 														 />
 													<div class="invalid-feedback"
 														th:text="#{employee.email.required}"></div>
@@ -135,36 +135,10 @@
 												</select>
 												<div class="invalid-feedback" th:text="#{employee.status.required}"></div>
 											</div>
-										</div>
-										<div class="form-row">
-											<div class="col-md-6">
-												<div class="form-group">
-													<label class="small mb-1" for="inputPassword"
-														th:text="#{employee.password}"></label> <input
-														class="form-control py-4" id="inputPassword" type="password"
-														th:placeholder="#{employee.password.placeholder}"
-														th:field="*{password}" required />
-													<div class="invalid-feedback"
-														th:text="#{employee.password.required}"></div>
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-group">
-													<label class="small mb-1" for="inputConfirmPassword"
-														th:text="#{employee.confirmPassword}"></label> <input
-														class="form-control py-4" id="inputConfirmPassword"
-														type="password"
-														th:placeholder="#{employee.confirmPassword.placeholder}"
-														th:field="*{confirmPassword}" required />
-													<div class="invalid-feedback"
-														th:text="#{employee.confirmPassword.required}"></div>
-							
-												</div>
-											</div>
-										</div>															
+										</div>								
 										<div class="form-group mt-4 mb-0">
 											<button class="btn btn-primary btn-block"
-												th:text="#{employee.create}"></button>
+												th:text="#{employee.update}"></button>
 										</div>
 									</form>
 								</div>
@@ -173,66 +147,9 @@
 					</div>
 				</div>
 			</main>
-			<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-				aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel"
-								th:text="#{common.error}"></h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body"
-							th:text="#{employee.passwordConformationNotSame}"></div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal" th:text="#{common.close}"></button>
-						</div>
-					</div>
-				</div>
-			</div>
 			<th:block th:insert="common.html :: footer"></th:block>
 		</div>
 	</div>
 	<th:block th:insert="common.html :: script"></th:block>
-	<script th:inline="javascript">
-		$("form").submit(function( event ) {
-			  if ($('#inputPassword').val() != $('#inputConfirmPassword').val()) {
-				  $('#myModal').modal('show');
-				  event.preventDefault();
-			  }
-		});
-	</script>
-	<script th:inline="javascript">
-		$(document).ready(function(){
-		  $("#citizenNumberInput").keyup(function(){
-			  if (this.value) {
-				  $.get("/employee/checkCitizenNumber/" + this.value, function(data, status){
-					  	if (data) {
-					  		var uniqeIndexError = [[#{employee.citizenNumber.uniqeIndexError}]];
-					  		$('#citizenNumberError').text(uniqeIndexError);
-					  		$("#citizenNumberGroup").addClass('was-validated');
-					  		$('#citizenNumberInput').attr("pattern", ".{0,0}");
-					  		
-					  	} else {
-					  		var required = [[#{employee.citizenNumber.required}]];
-					  		$('#citizenNumberError').html(required);
-					  		$("#citizenNumberGroup").removeClass('was-validated');
-					  		$('#citizenNumberInput').removeAttr("pattern");
-				  		}
-					  	 
-					  });
-			  } else {
-				  var required = [[#{employee.citizenNumber.required}]];
-			  		$('#citizenNumberError').html(required);
-			  		$("#citizenNumberGroup").removeClass('was-validated');
-			  		$('#citizenNumberInput').removeAttr("pattern");
-			  }
-		  });
-		});
-	</script>
 </body>
 </html>
