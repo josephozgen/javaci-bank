@@ -7,43 +7,35 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
-import net.javaci.bank.db.model.enumeration.EmployeeRoleType;
-import net.javaci.bank.db.model.enumeration.EmployeeStatusType;
 
-@Getter @Setter @ToString
-public class Employee extends UserEntityBase {
+@Getter @Setter @ToString @AllArgsConstructor @NoArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public abstract class UserEntityBase {
 	
-	/*
 	private Long id;
-	
+
     private String citizenNumber;
     
-    @NotEmpty
-    @Size(min = 2, max = 32)
     private String firstName;
-    
+
     private String middleName;
-    
+
     @NotEmpty
-    @Size(min = 2, max = 32)
+    @Size(min = 2)
     private String lastName;
-    
-    @NotEmpty
-    @Size(min = 2, max = 64)
-    private String email;
     
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthDate;
     
+    private String email;
+    
     private String phoneNumber;
-    
+
     private String password;
-    */
-	
-    private EmployeeStatusType status;
-    
-    private EmployeeRoleType role = EmployeeRoleType.USER;
 }

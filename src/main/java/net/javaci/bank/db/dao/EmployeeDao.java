@@ -5,16 +5,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.OptionalLong;
 
-import javax.annotation.PostConstruct;
+//import javax.annotation.PostConstruct;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.password.PasswordEncoder;
+//import org.springframework.security.core.userdetails.UserDetails;
+//import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import net.javaci.bank.db.model.Employee;
-import net.javaci.bank.db.model.enumeration.EmployeeRoleType;
+//import net.javaci.bank.db.model.enumeration.EmployeeRoleType;
 
 @Component
 public class EmployeeDao {
@@ -22,11 +22,14 @@ public class EmployeeDao {
 	@Autowired
 	private ModelMapper modelMapper;
 	
+	/*
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	*/
 	
 	private List<Employee> db = new ArrayList<Employee>();
 	
+	/*
 	@PostConstruct
 	private void init() {
 		Employee e = new Employee();
@@ -37,6 +40,7 @@ public class EmployeeDao {
 		e.setRole(EmployeeRoleType.USER);
 		db.add(e);
 	}
+	*/
  
 	public List<Employee> findAll() {
 		return db;
