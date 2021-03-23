@@ -92,6 +92,18 @@ public class EmployeeController {
 		return "redirect:/employee/list";
 	}
 	
+	@PostMapping("/delete/{id}")
+	public String handleUpdate(@PathVariable("id") Long id) {
+		
+		if (employeeDao.existsById(id) == false) {
+			return "error/404";
+		}
+		
+		employeeDao.deleteByid(id);
+		
+		return "redirect:/employee/list";
+	}
+	
 	@GetMapping("/list")
 	public String renderListPage(Model model, HttpServletRequest request) {
 		model.addAttribute("employees", employeeDao.findAll());
