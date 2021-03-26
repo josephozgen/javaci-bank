@@ -58,5 +58,6 @@
 	<modules>
 		<module>javaci-bank-db</module>
 		<module>javaci-bank-backoffice</module>
+		<module>javaci-bank-api</module>
 	</modules>
 </project>
