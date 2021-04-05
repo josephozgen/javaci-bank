@@ -1,6 +1,6 @@
 package net.javaci.bank.db.model.enumeration;
 
-public enum CustomerStatusType {
+public enum AccountStatusType {
 	
 	ACTIVE,
     INACTIVE,
