@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import net.javaci.bank.api.dto.AccountListDto;
 import net.javaci.bank.api.dto.AccountSaveDto;
-import net.javaci.bank.api.dto.AcoountListDto;
 import net.javaci.bank.db.model.Customer;
 
 @RestController
@@ -19,7 +19,7 @@ public class AccountApi {
 	public static final String API_ACCOUNT_BASE_URL = "/api/account";
 
 	@GetMapping("/list")
-	public List<Object> listAll(String citizenNumber){
+	public List<AccountListDto> listAll(String citizenNumber){
 		
 		Customer customer = null; // citizenNumber ile dao'dan musteriyi al
 		return null;
@@ -31,12 +31,12 @@ public class AccountApi {
 	}
 	
 	@GetMapping("/getInfo")
-	public AcoountListDto getInfo(@RequestBody Long accountId) {
+	public AccountListDto getInfo(@RequestBody Long accountId) {
 		return null;
 	}
 	
 	@PostMapping("/close")
-	public AcoountListDto close(@RequestBody Long accountId) {
+	public AccountListDto close(@RequestBody Long accountId) {
 		return null;
 	}
 }

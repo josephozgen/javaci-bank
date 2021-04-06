@@ -6,12 +6,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class AcoountListDto extends AccountSaveDto {
+public class CustomerSaveDto extends CustomerBaseDto {
 	
 	@NotEmpty
-	private Long id;
-	
-	@NotEmpty
-	private String accountNumber;
-
+	private String password;
 }
