@@ -2,14 +2,14 @@ package net.javaci.bank.db.model;
 
 import java.math.BigDecimal;
 
-//import javax.persistence.Column;
-//import javax.persistence.Entity;
-//import javax.persistence.EnumType;
-//import javax.persistence.Enumerated;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
-//import javax.persistence.ManyToOne;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,19 +18,19 @@ import lombok.Setter;
 import net.javaci.bank.db.model.enumeration.AccountCurrency;
 import net.javaci.bank.db.model.enumeration.AccountStatusType;
 
-// @Entity
+@Entity
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Account {
 
-	//    public Account(Long id) {
-	//        this.id = id;
-	//    }
+    public Account(Long id) {
+        this.id = id;
+    }
 
-    // @Id
-    // @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    // @ManyToOne
+    @ManyToOne
     private Customer customer;
     
     /*--
@@ -38,22 +38,22 @@ public class Account {
     private Set<TransactionLog> transactions;
     */
     
-    // @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String accountNumber;
     
-    // @Column(nullable = false)
+    @Column(nullable = false)
     private String accountName;
     
     private String description;
     
-    // @Column(nullable = false)
+    @Column(nullable = false)
     private BigDecimal balance;
     
-    // @Enumerated(EnumType.STRING)
-    // @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private AccountCurrency currency;
     
-    // @Enumerated(EnumType.STRING)
-    // @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private AccountStatusType status;
 }
