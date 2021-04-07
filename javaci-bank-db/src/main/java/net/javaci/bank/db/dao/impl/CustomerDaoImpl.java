@@ -36,16 +36,20 @@ public class CustomerDaoImpl implements CustomerDao {
         }
         
         if (resultList.size() > 1) {
-            log.error("Customer by citizen number query returned more than 1 result: {} result", resultList.size());
+            log.error("Customer by citizen number query returned more than 1 result: {} results", resultList.size());
         }
         
         return Optional.of(resultList.get(0));
     }
 
-	@Override
-	public void save(Customer customer) {
-		// TODO Auto-generated method stub
-
-	}
+    @Override
+    public void save(Customer customer) {    
+        if (customer.getId() == null) {
+            entityManager.persist(customer);
+        } else {
+            entityManager.merge(customer);
+            entityManager.flush();
+        }
+    }
 
 }
