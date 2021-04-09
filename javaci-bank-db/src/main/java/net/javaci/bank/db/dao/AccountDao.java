@@ -1,14 +1,17 @@
 package net.javaci.bank.db.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.stereotype.Component;
+import java.util.Optional;
 
 import net.javaci.bank.db.model.Account;
 
-@Component 
-public class AccountDao {
-	
-	private static List<Account> db = new ArrayList<>();
+public interface AccountDao {
+
+    int countByCustomerId(Long customerId);
+
+    void save(Account entity);
+
+    Optional<Account> findById(Long accountId);
+
+    Account findByAccountNumber(String toAccountNumber);
+  
 }
